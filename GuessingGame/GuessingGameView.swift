@@ -55,7 +55,7 @@ struct GuessingGameView: View {
 
             // The title at the top of the screen.
             HStack {
-                Image(systemName: "sparkle.magnifyingglass")
+                Image(systemName: "dice.fill")
                 Text("Guessing Game")
             }
             .font(.largeTitle)
@@ -159,13 +159,16 @@ struct GuessingGameView: View {
             message = "\(guess) is not my number. Try again."
             messageSymbol = "xmark.circle.fill"
             messageColor = Color.orange
+            
+            if guess < secretNumber {
+                message = "lower"
+            } else {
+                message = "higher"
+            }
         }
     }
     
-    if guess < target {
-        message = "lower"}
-    else
-    {message = "higher"}
+
 
     // Makes the guess 10 smaller, but never smaller than the lowest number.
     func lowerGuessByTen() {
